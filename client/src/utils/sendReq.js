@@ -12,9 +12,9 @@ export const sendReq = async (url,method,numReq,proxyMode,payLoad={}) => {
         data: payLoad,
     };
     try {
-        const {data}=await axios.post('http://localhost:8000',{config,numReq,proxyMode})
-        console.log(data)
+        const {data}=await axios.post(`${import.meta.env.VITE_BACKEND_URL}`,{config,numReq,proxyMode})
+        return data
     } catch (error) {
-        console.log(error)
+        throw new Error(error)
     }
 }

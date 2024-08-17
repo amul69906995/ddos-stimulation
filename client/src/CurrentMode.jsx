@@ -4,7 +4,7 @@ import { useEffect } from "react";
 const CurrentMode = ({ mode, handleChangeMode }) => {
     useEffect(()=>{
       const setCurrentMode=async()=>{
-        const {data}=await axios.post('http://localhost:8000/set-current-mode',{mode})
+        const {data}=await axios.post(`${import.meta.env.VITE_BACKEND_URL}/set-current-mode`,{mode})
         console.log("current mode respone",data);
       }
       setCurrentMode();
