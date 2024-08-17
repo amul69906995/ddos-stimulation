@@ -57,6 +57,7 @@ const express = require('express');
 const app = express();
 const port = 8000;
 const cors = require('cors')
+require('dotenv').config()
 //serve static file
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -72,7 +73,7 @@ app.post('/', async (req, res) => {
 app.post('/set-current-mode', async (req, res) => {
     //console.log(req.body)
     try {
-        const { data } = await axios.post('http://localhost:5000/set-current-mode', req.body)
+        const { data } = await axios.post(`${process.env.TARGET_SERVER}/set-current-mode`, req.body)
         // console.log(data)
         res.json(data)
     } catch (error) {
